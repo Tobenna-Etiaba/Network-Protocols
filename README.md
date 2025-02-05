@@ -100,8 +100,18 @@ Here I will demonstrate how to use a virtual machine to reach/connect to another
 <img width="858" alt="Screenshot 2025-02-05 at 00 23 26" src="https://github.com/user-attachments/assets/e96d5072-6314-40b1-b65c-ca20cd261e41" />
 
 - In the image below we can observe SSH traffic in wireshark, by typing the command:
-  - ssh *username@ubuntuserversprivateIPaddress*
+   - ssh *username@ubuntuserversprivateIPaddress*
 
 <img width="1718" alt="Screenshot 2025-02-05 at 00 24 34" src="https://github.com/user-attachments/assets/6d501c78-d56e-4eb5-81f4-01e365f19431" />
 
-- 
+- In the image right above we can see the ssh traffic in wireshark. What's happening in the image is a successful SSH establishment between the windows VM and the Ubuntu server. The session includes:
+  - a protocol exchange
+  - an Elliptic Curve Diffie-Hellman (ECDH) key exchange and;
+  - encrypted communication.
+
+<h2>Filtering DHCP Traffic</h2>
+
+- We can filter for DHCP traffic in wireshark or by typing; udp.port == 67 || udp.port == 68(DHCP uses User Datagram Protocol to transmit data)
+
+<img width="858" alt="Screenshot 2025-02-05 at 00 26 33" src="https://github.com/user-attachments/assets/dc3058d8-8079-4555-a9ac-fc8b33843158" />
+
