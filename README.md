@@ -93,3 +93,15 @@ Here I will demonstrate how to use a virtual machine to reach/connect to another
 
 <img width="1717" alt="Screenshot 2025-02-05 at 00 10 27" src="https://github.com/user-attachments/assets/96fde8aa-98aa-46f2-ae14-9919f50ceb12" />
 
+<h2>Filtering SSH Traffic</h2>
+
+- We can filter for SSH traffic in wireshark or by typing; tcp.port == 22(SSH uses Transmission Control Protocol to transmit data)
+
+<img width="858" alt="Screenshot 2025-02-05 at 00 23 26" src="https://github.com/user-attachments/assets/e96d5072-6314-40b1-b65c-ca20cd261e41" />
+
+- In the image below we can observe SSH traffic in wireshark, by typing the command:
+  - ssh *username@ubuntuserversprivateIPaddress*
+
+<img width="1718" alt="Screenshot 2025-02-05 at 00 24 34" src="https://github.com/user-attachments/assets/6d501c78-d56e-4eb5-81f4-01e365f19431" />
+
+- 
