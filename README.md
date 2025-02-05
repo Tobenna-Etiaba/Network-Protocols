@@ -115,3 +115,21 @@ Here I will demonstrate how to use a virtual machine to reach/connect to another
 
 <img width="858" alt="Screenshot 2025-02-05 at 00 26 33" src="https://github.com/user-attachments/assets/dc3058d8-8079-4555-a9ac-fc8b33843158" />
 
+- DHCP(Dynamic Host Configuration Protocol) is the protocol used to assign an IP address to devices when they are first connected to the network. And as a result we can use ipconfig /renew to try and get a new IP address.
+
+<img width="1718" alt="Screenshot 2025-02-05 at 00 27 55" src="https://github.com/user-attachments/assets/38299653-1cc5-4ded-bc5c-eb6feacd69ed" />
+
+- In the image right above we are unable to get a new IP address by running ipconfig /renew due to the fact that the original IP address needs to ditched. In order to do that you can use ipconfig /release and from there use ipconfig /renew, however the moment you type ipconfig /release the windows vm will be disconneted so in order to have the two commands run successively you can type them in a textfile(notepad) and save it somewhere on the VM.
+
+- You can ty cd in powershell to change directory, and from there use ls(to show list) and then type:
+ - .\*the name of the save textfile.bat* (to run the commands in the saved textfile)
+
+<img width="1278" alt="Screenshot 2025-02-05 at 00 36 08" src="https://github.com/user-attachments/assets/20184a99-d2ff-4cdc-b6a6-952d5053d8ed" />
+
+<img width="859" alt="Screenshot 2025-02-05 at 00 37 43" src="https://github.com/user-attachments/assets/9778ae8d-d477-40a2-a5d2-be10004b8bc5" />
+
+<img width="1722" alt="Screenshot 2025-02-05 at 00 38 18" src="https://github.com/user-attachments/assets/81154c71-7bc6-4ead-8568-b6a4ced11ed7" />
+
+- In the image right above we can see from the traffic in wireshark that we were able to successfully request for a new IP address. 
+
+- Whats's going on in wireshark from the image above is the windows VM is communicating to the network concenring it no longer using its current IP address. The windows VM(no longer 10.0.0.4 but now 0.0.0.0) communicates to the DHCP server that have an IP address. The DHCP server communicates with the device and offers it a new IP address, and as a result the windows VM is now able to acquire a new IP address.
