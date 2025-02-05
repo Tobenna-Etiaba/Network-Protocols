@@ -81,4 +81,15 @@ Here I will demonstrate how to use a virtual machine to reach/connect to another
 
 <img width="586" alt="Screenshot 2025-02-05 at 00 04 46" src="https://github.com/user-attachments/assets/cc6bb709-6b01-4caf-8437-d020212d7aae" />
 
-- If you look at the image right above you can see that Destination Port Ranges was not given a value and thats beacuse ICMP(Internet Control Message Protocol) does not
+- If you look at the image right above you can see that Destination Port Ranges was not given a value and thats beacuse ICMP(Internet Control Message Protocol) does not use any ports.
+
+- Looking at the image below you can see that in powershell the request has been timed out due to the fact that the new inbound security rule on the Ubuntu server was set to ignore incoming traffic and in wireshark we can see that the windows VM is sending requests continually but is not getting a response from the Ubuntu server anymore.
+
+<img width="1717" alt="Screenshot 2025-02-05 at 00 09 25" src="https://github.com/user-attachments/assets/beb7acbf-312b-4c53-8e20-e9c9fbe9f0c3" />
+
+- We can go back to Azure and change the inbound security rule from deny back to allow so that the ping requests can go through again.
+
+<img width="586" alt="Screenshot 2025-02-05 at 00 10 10" src="https://github.com/user-attachments/assets/9349c5be-fc49-4fd9-876b-644e582267c3" />
+
+<img width="1717" alt="Screenshot 2025-02-05 at 00 10 27" src="https://github.com/user-attachments/assets/96fde8aa-98aa-46f2-ae14-9919f50ceb12" />
+
