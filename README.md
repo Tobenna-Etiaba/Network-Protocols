@@ -95,7 +95,7 @@ Here I will demonstrate how to use a virtual machine to reach/connect to another
 
 <h2>Filtering SSH Traffic</h2>
 
-- We can filter for SSH traffic in wireshark or by typing; tcp.port == 22(SSH uses Transmission Control Protocol to transmit data)
+- We can filter for SSH traffic in wireshark by typing ssh or tcp.port == 22(SSH uses Transmission Control Protocol to transmit data)
 
 <img width="858" alt="Screenshot 2025-02-05 at 00 23 26" src="https://github.com/user-attachments/assets/e96d5072-6314-40b1-b65c-ca20cd261e41" />
 
@@ -111,7 +111,7 @@ Here I will demonstrate how to use a virtual machine to reach/connect to another
 
 <h2>Filtering DHCP Traffic</h2>
 
-- We can filter for DHCP traffic in wireshark or by typing; udp.port == 67 || udp.port == 68(DHCP uses User Datagram Protocol to transmit data)
+- We can filter for DHCP traffic in wireshark or by typing dhcp or udp.port == 67 || udp.port == 68(DHCP uses User Datagram Protocol to transmit data)
 
 <img width="858" alt="Screenshot 2025-02-05 at 00 26 33" src="https://github.com/user-attachments/assets/dc3058d8-8079-4555-a9ac-fc8b33843158" />
 
@@ -133,3 +133,21 @@ Here I will demonstrate how to use a virtual machine to reach/connect to another
 - In the image right above we can see from the traffic in wireshark that we were able to successfully request for a new IP address. 
 
 - Whats's going on in wireshark from the image above is the windows VM is communicating to the network concenring it no longer using its current IP address. The windows VM(no longer 10.0.0.4 but now 0.0.0.0) communicates to the DHCP server that have an IP address. The DHCP server communicates with the device and offers it a new IP address, and as a result the windows VM is now able to acquire a new IP address.
+
+<h2>Filtering DNS Traffic</h2>
+
+- We can filter for Dns traffic in wireshark by typing dns or udp.port == 53 || tcp.port == 53(DNS uses both Transmission Control Protocol & User Datagram Protocol to transmit data)
+
+<img width="859" alt="Screenshot 2025-02-05 at 00 42 57" src="https://github.com/user-attachments/assets/7ae19b7a-7c89-408a-97e0-cc120f562739" />
+
+- DNS(Domain Name System) is used to convert human readable domain names to an IP address that a computer can use and understand. This can be achieved by typing the command nslookup. In the image below we can take; www.google.com & www.disney.com and get their IP addresses which can then be understood and used by our VM(nslookup is used when you want figure out a machines IP address if you know then name or vice versa).
+
+<img width="859" alt="Screenshot 2025-02-05 at 00 45 46" src="https://github.com/user-attachments/assets/1ad148f3-f8a3-457b-b4aa-3eacbdbde8f7" />
+
+<h2>Filtering RDP Traffic</h2>
+
+- We can filter for RDP traffic in wireshark or by typing rdp or tcp.port == 53(DNS uses Transmission Control Protocol).
+
+<img width="858" alt="Screenshot 2025-02-05 at 00 46 15" src="https://github.com/user-attachments/assets/48bd5e75-08e6-454a-85eb-679b97fa5cbd" />
+
+- Unlike the other protocols where commands needed to be typed in powershell in order see the traffic in wireshark, no further action is required here as RDP(Remote Desktop Protocol) is the protocol used to connect from one computer to another to gain remote desktop GUI and as a result traffic is always being transmitted.
