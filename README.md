@@ -16,16 +16,16 @@ Here I will demonstrate how to use a virtual machine to reach/connect to another
 <h2>Operating Systems Used</h2>
  
  - Windows 10 Pro (22H2) 
- - Ubuntu Server 20.04
+ - Ubuntu Server 24.04
 
 <h2>Set up</h2>
  
- - I started out by creating two virtual machines on Azure one for Windows and the other for the Ubuntu server.
+ - I started out by creating two virtual machines on Azure, one for Windows and one for the Ubuntu server.
 
 <img width="1248" alt="Screenshot 2025-02-04 at 23 33 35" src="https://github.com/user-attachments/assets/4832d73c-b7b4-4776-abd1-ae31297de586" />
  
 
-- To ensure that the Windows VM could successfully connect to the Ubuntu server, I had to ensure that both VMs were within the same resource group and network group.
+- To ensure that the Windows VM could successfully connect to the Ubuntu server, I had to ensure that both VMs were within the same resource group and virtual network.
 <img width="1062" alt="Screenshot 2025-02-04 at 23 35 06" src="https://github.com/user-attachments/assets/fd6a02ac-ee6f-4cdb-99ff-d3c74d5fddae" />
 
 <img width="854" alt="Screenshot 2025-02-04 at 23 36 56" src="https://github.com/user-attachments/assets/357f8261-62f2-4590-a6ff-2c408e667452" />
@@ -102,7 +102,7 @@ Here I will demonstrate how to use a virtual machine to reach/connect to another
 
 <img width="858" alt="Screenshot 2025-02-05 at 00 23 26" src="https://github.com/user-attachments/assets/e96d5072-6314-40b1-b65c-ca20cd261e41" />
 
-- In the image below we can observe SSH traffic in Wireshark, by typing the command:
+- In the image below we can observe SSH traffic in Wireshark, by typing the following command within powershell:
    - ssh *username@ubuntuserversprivateIPaddress*
 
 <img width="1718" alt="Screenshot 2025-02-05 at 00 24 34" src="https://github.com/user-attachments/assets/6d501c78-d56e-4eb5-81f4-01e365f19431" />
@@ -118,13 +118,13 @@ Here I will demonstrate how to use a virtual machine to reach/connect to another
 
 <img width="858" alt="Screenshot 2025-02-05 at 00 26 33" src="https://github.com/user-attachments/assets/dc3058d8-8079-4555-a9ac-fc8b33843158" />
 
-- DHCP(Dynamic Host Configuration Protocol) is the protocol used to assign an IP address to devices when they are first connected to the network. And as a result, we can use ipconfig /renew to try and get a new IP address.
+- DHCP(Dynamic Host Configuration Protocol) is the protocol used to assign an IP address to a device when first connected to the network. As a result, we can use ipconfig /renew to try to get a new IP address.
 
 <img width="1718" alt="Screenshot 2025-02-05 at 00 27 55" src="https://github.com/user-attachments/assets/38299653-1cc5-4ded-bc5c-eb6feacd69ed" />
 
 - In the image right above we are unable to get a new IP address by running ipconfig /renew due to the fact that the original IP address needs to be ditched. In order to do that you can use ipconfig /release and from there use ipconfig /renew, however the moment you type ipconfig /release the Windows VM will be disconnected so to have the two commands run successively you can type them in a textfile(notepad) and save it somewhere on the VM.
 
-- You can type cd in Powershell to change directory, and from there use ls(to show lists) and then type; ".\\*the name of the save textfile*.bat" (to run the commands in the saved text file)
+- You can type cd in Powershell to change directory, and from there use ls(to show lists) and then type; ".\\*the name of the saved textfile*.bat" (to run the commands in the saved text file)
 
 <img width="1278" alt="Screenshot 2025-02-05 at 00 36 08" src="https://github.com/user-attachments/assets/20184a99-d2ff-4cdc-b6a6-952d5053d8ed" />
 
@@ -142,7 +142,7 @@ Here I will demonstrate how to use a virtual machine to reach/connect to another
 
 <img width="859" alt="Screenshot 2025-02-05 at 00 42 57" src="https://github.com/user-attachments/assets/7ae19b7a-7c89-408a-97e0-cc120f562739" />
 
-- DNS(Domain Name System) is used to convert human-readable domain names to an IP address that a computer can use and understand. This can be achieved by typing the command nslookup. In the image below we can take; www.google.com & www.disney.com and get their IP addresses which can then be understood and used by our VM(nslookup is used when you want to figure out a machines IP address if you know the name or vice versa).
+- DNS(Domain Name System) is used to convert human-readable domain names to an IP address that a computer can use and understand. This can be achieved by typing the command nslookup within powershell. In the image below we can take; www.google.com & www.disney.com and get their IP addresses which can then be understood and used by our VM(nslookup is used when you want to figure out a machines IP address if you know the name or vice versa).
 
 <img width="859" alt="Screenshot 2025-02-05 at 00 45 46" src="https://github.com/user-attachments/assets/1ad148f3-f8a3-457b-b4aa-3eacbdbde8f7" />
 
